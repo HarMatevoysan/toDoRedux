@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import "./ToDoItem.css"
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { removeTodo, updateTodo, completeTodo } from "../../redux/action";
+import { removeTodo, updateTodo, completeTodo } from "../../store/action";
+import "./ToDoItem.css"
+
 
 function ToDoItem ({ todo, id, text, complited }) {
    const dispache = useDispatch()
@@ -12,6 +13,12 @@ function ToDoItem ({ todo, id, text, complited }) {
       e.preventDefault()
       dispache(updateTodo({ id, editText }))
       setIsEdit(false)
+   }
+   const removeTodos = () => {
+      dispache(removeTodo(todo.id))
+   }
+   const doneTodos = () => {
+      dispache(completeTodo(todo))
    }
    return (
       <div className={complited ? "todo__item done" : "todo__item"}>
@@ -27,15 +34,15 @@ function ToDoItem ({ todo, id, text, complited }) {
                </form>
             ) : (<div>
                {text}
-               <button onClick={() => dispache(removeTodo(todo.id))}>Remove</button>
+               <button onClick={removeTodos}>Remove</button>
                <button onClick={() => setIsEdit(true)}>Edit</button>
             </div>)
          }
 
 
          <button
-            style={{ border: "none", backgroundColor: "red", color: "white", float: "right" }}
-            onClick={() => dispache(completeTodo(todo))}
+            className='done__bnt'
+            onClick={doneTodos}
          >
             {complited ? "Complited" : "Done"}
          </button>

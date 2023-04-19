@@ -1,4 +1,4 @@
-.todo__item{
+.todo__item {
    background: gainsboro;
    border-radius: 10px;
    padding: 15px;
@@ -6,11 +6,20 @@
    display: flex;
    justify-content: space-between;
 }
-button{
+
+button {
    margin: 0 3px;
    cursor: pointer;
    padding: 5px;
 }
-.done{
-   background:lightgreen;
+
+.done {
+   background: lightgreen;
+}
+
+.done__bnt {
+   border:none;
+   background-color: red;
+   color: white;
+   float: right;
 }

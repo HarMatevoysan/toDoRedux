@@ -1,2 +1,2 @@
-export { default as ToDoList } from "./ToDoList/index"
-export { default as ToDoItem } from "./ToDoItem/index"
+export { default as ToDoList } from "./ToDoList"
+export { default as ToDoItem } from "./ToDoItem"

@@ -1,24 +1,33 @@
-import { useDispatch, useSelector } from 'react-redux';
-import './App.css';
 import { ToDoList } from './components';
 import { useEffect, useState } from 'react';
-import { addTodo } from './redux/action';
+import { addTodo, fetchTodos } from './store/action';
+import { useDispatch, useSelector } from 'react-redux';
+import './App.css';
+
 
 function App () {
-   const [text, setText] = useState("")
    const state = useSelector(state => ({ ...state }))
+   const [text, setText] = useState("")
    const dispatch = useDispatch()
 
    const addTodos = () => {
       dispatch(addTodo(text))
       setText("")
    }
+   useEffect(() => {
+      dispatch(fetchTodos())
+   }, [])
 
    return (
       <div className="contenir">
          <div className='title'>ToDo List </div>
          <form className='form' onSubmit={(e) => e.preventDefault()}>
-            <input onChange={(e) => setText(e.target.value)} type='text' value={text} placeholder='text are here' />
+            <input
+               onChange={(e) => setText(e.target.value)}
+               type='text'
+               value={text}
+               placeholder='Text are here'
+            />
             <button onClick={addTodos}>Add</button>
          </form>
          <div>
@@ -27,7 +36,7 @@ function App () {
                ? <div>
                   <ToDoList />
                </div>
-               : <div style={{ textAlign: 'center', fontSize: "30px", color: 'red' }}>No ToDos</div>
+               : <div className='todo-text'>No ToDos</div>
             }
          </div>
       </div>

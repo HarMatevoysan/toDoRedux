@@ -1,6 +1,7 @@
 import { ToDoItem } from "../index"
 import { useDispatch, useSelector } from "react-redux";
 import { clearCompetedTodos } from '../../store/action';
+
 import "./ToDoList.css"
 
 const TodoList = () => {
@@ -11,8 +12,9 @@ const TodoList = () => {
    const clearCompetedTodosBtn = () => {
       dispatch(clearCompetedTodos(state.todo))
    }
-   const toDoItem = state.todo.map(todo => {
-      return <ToDoItem
+
+   const toDoItem = state.todo.map(todo =>
+      <ToDoItem
          todo={todo}
          id={todo.id}
          key={todo.id}
@@ -20,7 +22,8 @@ const TodoList = () => {
          complited={todo.complited}
 
       />
-   })
+   )
+
    return (
       <div >
          {toDoItem}

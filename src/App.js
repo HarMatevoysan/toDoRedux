@@ -2,6 +2,7 @@ import { ToDoList } from './components';
 import { useEffect, useState } from 'react';
 import { addTodo, fetchTodos } from './store/action';
 import { useDispatch, useSelector } from 'react-redux';
+
 import './App.css';
 
 
@@ -14,6 +15,7 @@ function App () {
       dispatch(addTodo(text))
       setText("")
    }
+
    useEffect(() => {
       dispatch(fetchTodos())
    }, [])

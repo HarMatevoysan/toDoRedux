@@ -1,4 +1,3 @@
-import ToDoService from "../service"
 import * as types from "./actionTypes"
 
 const defaultState = {

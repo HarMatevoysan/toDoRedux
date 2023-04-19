@@ -1,25 +1,30 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { removeTodo, updateTodo, completeTodo } from "../../store/action";
+
 import "./ToDoItem.css"
 
 
 function ToDoItem ({ todo, id, text, complited }) {
-   const dispache = useDispatch()
+
+   const dispatch = useDispatch()
    const [isEdit, setIsEdit] = useState(false)
    const [editText, setEditText] = useState(text)
 
    const saveTodo = (e) => {
       e.preventDefault()
-      dispache(updateTodo({ id, editText }))
+      dispatch(updateTodo({ id, editText }))
       setIsEdit(false)
    }
+
    const removeTodos = () => {
-      dispache(removeTodo(todo.id))
+      dispatch(removeTodo(todo.id))
    }
+
    const doneTodos = () => {
-      dispache(completeTodo(todo))
+      dispatch(completeTodo(todo))
    }
+
    return (
       <div className={complited ? "todo__item done" : "todo__item"}>
          {isEdit

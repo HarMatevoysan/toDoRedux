@@ -11,18 +11,19 @@ const TodoList = () => {
    const clearCompetedTodosBtn = () => {
       dispatch(clearCompetedTodos(state.todo))
    }
+   const toDoItem = state.todo.map(todo => {
+      return <ToDoItem
+         todo={todo}
+         id={todo.id}
+         key={todo.id}
+         text={todo.title}
+         complited={todo.complited}
 
+      />
+   })
    return (
       <div >
-         {state.todo.map(todo => {
-            return <ToDoItem
-               todo={todo}
-               id={todo.id}
-               key={todo.id}
-               text={todo.title}
-               complited={todo.complited}
-            />
-         })}
+         {toDoItem}
          <div className="done__btn">
             <div>{completedSize}/{state.todo.length} Completed</div>
             <button
